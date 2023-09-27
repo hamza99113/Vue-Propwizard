@@ -52,7 +52,17 @@ export default {
       // validator: function (value) {
       //   return value == "1" || value == "0";
       // }
-    },
+    }
+  },
+  emits:{
+    'toggle-favorite' : function (id) {
+      if(id){
+        return true;
+      } else {
+        console.warn('Id is missing');
+        return false;
+      }
+    }
   },
   data() {
     return {
