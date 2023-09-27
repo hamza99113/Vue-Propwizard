@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavourite ? "(Favourite)" : "" }}</h2>
+    <h2>{{ name }} {{ isFavourite ? "(Favourite)" : "" }}</h2>
     <button @click="toggleFavorite">Toggle Favourite</button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -27,6 +27,10 @@ export default {
   //   'isFavourite'
   // ],
   props: {
+    id:{
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true,
@@ -52,9 +56,9 @@ export default {
   },
   data() {
     return {
-      detailsAreVisible: false,
+      detailsAreVisible: false
       // To Maintain Uni-Directional Data Flow
-      friendIsFavourite: this.isFavourite,
+      // friendIsFavourite: this.isFavourite
     };
   },
   methods: {
@@ -62,7 +66,8 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavorite() {
-      this.friendIsFavourite = !this.friendIsFavourite;
+      // this.friendIsFavourite = !this.friendIsFavourite;
+      this.$emit('toggle-favorite', this.id); // sending data from child to Parent 
     },
   },
 };
