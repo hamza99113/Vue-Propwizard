@@ -1,8 +1,10 @@
 <template>
   <li>
-    <h2>{{ name }} {{friendIsFavourite === '1' ? '(Favourite)' : ''}}</h2>
+    <h2>{{ name }} {{ friendIsFavourite ? "(Favourite)" : "" }}</h2>
     <button @click="toggleFavorite">Toggle Favourite</button>
-    <button @click="toggleDetails">{{detailsAreVisible ? 'Hide' : 'Show'}} Details</button>
+    <button @click="toggleDetails">
+      {{ detailsAreVisible ? "Hide" : "Show" }} Details
+    </button>
     <ul v-if="detailsAreVisible">
       <li>
         <strong>Phone:</strong>
@@ -24,52 +26,44 @@ export default {
   //   'emailAddress',
   //   'isFavourite'
   // ],
-  props:{
+  props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
     phoneNumber: {
       type: String,
-      required: true
+      required: true,
     },
     emailAddress: {
       type: String,
-      required: true
+      required: true,
     },
     isFavourite: {
-      type: String,
+      type: Boolean,
       required: false,
-      default: '0',
-      validator: function(value) {
-        return value == '1' || value == '0';
-      }
-    }
+      default: false
+      // type: String,
+      // default: '0',
+      // validator: function (value) {
+      //   return value == "1" || value == "0";
+      // }
+    },
   },
   data() {
     return {
       detailsAreVisible: false,
-      friend: {
-        id: "manual",
-        name: "Manuel Lorenz",
-        phone: "0123 45678 90",
-        email: "manuel@localhost.com",
-      },
       // To Maintain Uni-Directional Data Flow
-      friendIsFavourite: this.isFavourite
+      friendIsFavourite: this.isFavourite,
     };
   },
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
-    toggleFavorite(){
-      if(this.friendIsFavourite === '1'){
-        this.friendIsFavourite = '0';
-      } else {
-        this.friendIsFavourite = '1';
-      }
-    }
-  }
+    toggleFavorite() {
+      this.friendIsFavourite = !this.friendIsFavourite;
+    },
+  },
 };
 </script>

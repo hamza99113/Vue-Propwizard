@@ -1,43 +1,41 @@
 <template>
-<section>
+  <section>
     <header>
-        <h1>My Friends</h1>
+      <h1>My Friends</h1>
     </header>
     <ul>
-        <friend-contact
-        name="Manuel Lorenz"
-        phone-number = "0123 34674 55"
-        email-address = "manual@localhost.com"
-        is-favourite="1"></friend-contact>
-        <friend-contact
-        name="Julie Jones"
-        phone-number = "0998 311124 00"
-        email-address = "julie@localhost.com"
-        is-favourite="0"></friend-contact>
+      <friend-contact
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favourite="true"
+      ></friend-contact>
     </ul>
-</section>
+  </section>
 </template>
 
 <script>
 export default {
-    data(){
-        return {
-            friends: [
-                {
-                    id: 'manual',
-                    name: 'Manual Lorenz',
-                    phone: '0123 34674 55',
-                    email: 'manual@localhost.com'
-                },
-                {
-                    id: 'julie',
-                    name: 'julie jones',
-                    phone: '0998 311124 00',
-                    email: 'julie@localhost.com'
-                }
-            ]
-        };
-    }
+  data() {
+    return {
+      friends: [
+        {
+          id: "manual",
+          name: "Manual Lorenz",
+          phone: "0123 34674 55",
+          email: "manual@localhost.com",
+        },
+        {
+          id: "julie",
+          name: "julie jones",
+          phone: "0998 311124 00",
+          email: "julie@localhost.com",
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -47,7 +45,7 @@ export default {
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -105,5 +103,4 @@ header {
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
-
 </style>
