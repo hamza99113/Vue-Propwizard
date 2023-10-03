@@ -1,5 +1,5 @@
 # Vue - Propwizard
-### Udemy Course: [Vue - The Complete Guide (incl. Router & Composition API)](https://www.udemy.com/course/vuejs-2-the-complete-guide/)
+
 
 ## Project setup
 ```
@@ -23,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+# Reference:
+### Udemy Course: [Vue - The Complete Guide (incl. Router & Composition API)](https://www.udemy.com/course/vuejs-2-the-complete-guide/)
